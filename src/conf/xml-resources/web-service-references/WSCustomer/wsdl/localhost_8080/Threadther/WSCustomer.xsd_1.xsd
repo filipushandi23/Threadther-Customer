@@ -8,6 +8,10 @@
 
 <xs:element name="getComingSoonMoviesResponse" type="tns:getComingSoonMoviesResponse"/>
 
+<xs:element name="getCustomer" type="tns:getCustomer"/>
+
+<xs:element name="getCustomerResponse" type="tns:getCustomerResponse"/>
+
 <xs:element name="getMovieById" type="tns:getMovieById"/>
 
 <xs:element name="getMovieByIdResponse" type="tns:getMovieByIdResponse"/>
@@ -24,9 +28,9 @@
 
 <xs:element name="getStudioByStudioNumberResponse" type="tns:getStudioByStudioNumberResponse"/>
 
-<xs:element name="getUser" type="tns:getUser"/>
+<xs:element name="getUserByEmail" type="tns:getUserByEmail"/>
 
-<xs:element name="getUserResponse" type="tns:getUserResponse"/>
+<xs:element name="getUserByEmailResponse" type="tns:getUserByEmailResponse"/>
 
 <xs:element name="insertAsCustomer" type="tns:insertAsCustomer"/>
 
@@ -40,21 +44,21 @@
 
 <xs:element name="registerResponse" type="tns:registerResponse"/>
 
-<xs:element name="topUpSaldo" type="tns:topUpSaldo"/>
+<xs:element name="topUp" type="tns:topUp"/>
 
-<xs:element name="topUpSaldoResponse" type="tns:topUpSaldoResponse"/>
+<xs:element name="topUpResponse" type="tns:topUpResponse"/>
 
 <xs:element name="updateUser" type="tns:updateUser"/>
 
 <xs:element name="updateUserResponse" type="tns:updateUserResponse"/>
 
-<xs:complexType name="getUser">
+<xs:complexType name="getUserByEmail">
 <xs:sequence>
 <xs:element name="email" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getUserResponse">
+<xs:complexType name="getUserByEmailResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:user" minOccurs="0"/>
 </xs:sequence>
@@ -204,6 +208,71 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="register">
+<xs:sequence>
+<xs:element name="first_name" type="xs:string" minOccurs="0"/>
+<xs:element name="last_name" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="profile_picture" type="xs:string" minOccurs="0"/>
+<xs:element name="phone_number" type="xs:int" minOccurs="0"/>
+<xs:element name="birth_date" type="xs:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registerResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllScheduleByMovieId">
+<xs:sequence>
+<xs:element name="movieId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllScheduleByMovieIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:schedule" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSeatByStudioNumber">
+<xs:sequence>
+<xs:element name="studioNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSeatByStudioNumberResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:seat" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getComingSoonMovies">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getComingSoonMoviesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:movie" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="topUp">
+<xs:sequence>
+<xs:element name="userId" type="xs:int"/>
+<xs:element name="balance" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="topUpResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="getMovieById">
 <xs:sequence>
 <xs:element name="movieId" type="xs:string" minOccurs="0"/>
@@ -241,34 +310,15 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="register">
+<xs:complexType name="getCustomer">
 <xs:sequence>
-<xs:element name="first_name" type="xs:string" minOccurs="0"/>
-<xs:element name="last_name" type="xs:string" minOccurs="0"/>
-<xs:element name="email" type="xs:string" minOccurs="0"/>
-<xs:element name="password" type="xs:string" minOccurs="0"/>
-<xs:element name="profile_picture" type="xs:string" minOccurs="0"/>
-<xs:element name="phone_number" type="xs:int" minOccurs="0"/>
-<xs:element name="birth_date" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="registerResponse">
+<xs:complexType name="getCustomerResponse">
 <xs:sequence>
-<xs:element name="return" type="xs:boolean" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="topUpSaldo">
-<xs:sequence>
-<xs:element name="custId" type="xs:string" minOccurs="0"/>
-<xs:element name="balance" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="topUpSaldoResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
+<xs:element name="return" type="tns:customer" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -295,40 +345,6 @@
 <xs:complexType name="insertAsCustomerResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getAllScheduleByMovieId">
-<xs:sequence>
-<xs:element name="movieId" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getAllScheduleByMovieIdResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:schedule" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getSeatByStudioNumber">
-<xs:sequence>
-<xs:element name="studioNumber" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getSeatByStudioNumberResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:seat" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getComingSoonMovies">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="getComingSoonMoviesResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:movie" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

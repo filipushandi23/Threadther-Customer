@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.ws.WebServiceRef;
 import services.User;
 import services.WSCustomer_Service;
@@ -23,7 +24,7 @@ public class loginServlet extends HttpServlet {
 
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Threadther/WSCustomer.wsdl")
     private WSCustomer_Service service;
-
+    public static HttpSession session;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -79,11 +80,14 @@ public class loginServlet extends HttpServlet {
         //processRequest(request, response);
         PrintWriter out = response.getWriter();
         services.WSCustomer port = service.getWSCustomerPort();
+        
+        session = request.getSession();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         out.println(email+" "+password);
         if(port.login(email, password)){
-            User u = port.getUser(email);
+            User u = port.getUserByEmail(email);
+            session.setAttribute("userid", email);
             response.sendRedirect("home.jsp?name="+u.getFirstName());
         }
         else{

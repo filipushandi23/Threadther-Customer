@@ -63,7 +63,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
                 out.println("<h1>Welcome to Threadther, " + name + "</h1>");
             } else {
                 name = request.getParameter("name");
-                out.println("<h1>Welcome to Threadther, " + name + "</h1>");
+                out.println("<h1>Welcome to Threadther, " + name + "</h1><a href='logout.jsp'>Log Out</a>");
             }
 
         
@@ -73,6 +73,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <li><a href=\"login.jsp\">Login</a></li>\n");
       out.write("            <li><a href=\"register.jsp\">Register</a></li>\n");
       out.write("            <li><a href=\"showMovieSchedule.jsp\">Show Movie Schedule</a></li>\n");
+      out.write("            <li><a href=\"profile.jsp\">My Profile</a></li>\n");
       out.write("        </ul>\n");
       out.write("        <h2>Playing Now Movies</h2>\n");
       out.write("        ");

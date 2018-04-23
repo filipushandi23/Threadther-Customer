@@ -21,7 +21,7 @@
                 out.println("<h1>Welcome to Threadther, " + name + "</h1>");
             } else {
                 name = request.getParameter("name");
-                out.println("<h1>Welcome to Threadther, " + name + "</h1>");
+                out.println("<h1>Welcome to Threadther, " + name + "</h1><a href='logout.jsp'>Log Out</a>");
             }
 
         %>
@@ -30,6 +30,7 @@
             <li><a href="login.jsp">Login</a></li>
             <li><a href="register.jsp">Register</a></li>
             <li><a href="showMovieSchedule.jsp">Show Movie Schedule</a></li>
+            <li><a href="profile.jsp">My Profile</a></li>
         </ul>
         <h2>Playing Now Movies</h2>
         <%            try {

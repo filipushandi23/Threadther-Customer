@@ -61,21 +61,6 @@ public interface WSCustomer {
 
     /**
      * 
-     * @param email
-     * @return
-     *     returns services.User
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getUser", targetNamespace = "http://WS/", className = "services.GetUser")
-    @ResponseWrapper(localName = "getUserResponse", targetNamespace = "http://WS/", className = "services.GetUserResponse")
-    @Action(input = "http://WS/WSCustomer/getUserRequest", output = "http://WS/WSCustomer/getUserResponse")
-    public User getUser(
-        @WebParam(name = "email", targetNamespace = "")
-        String email);
-
-    /**
-     * 
      * @param user
      * @return
      *     returns boolean
@@ -109,72 +94,6 @@ public interface WSCustomer {
 
     /**
      * 
-     * @return
-     *     returns java.util.List<services.Movie>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getShowingMovies", targetNamespace = "http://WS/", className = "services.GetShowingMovies")
-    @ResponseWrapper(localName = "getShowingMoviesResponse", targetNamespace = "http://WS/", className = "services.GetShowingMoviesResponse")
-    @Action(input = "http://WS/WSCustomer/getShowingMoviesRequest", output = "http://WS/WSCustomer/getShowingMoviesResponse")
-    public List<Movie> getShowingMovies();
-
-    /**
-     * 
-     * @param phone
-     * @param user
-     * @param birthDate
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "insertAsCustomer", targetNamespace = "http://WS/", className = "services.InsertAsCustomer")
-    @ResponseWrapper(localName = "insertAsCustomerResponse", targetNamespace = "http://WS/", className = "services.InsertAsCustomerResponse")
-    @Action(input = "http://WS/WSCustomer/insertAsCustomerRequest", output = "http://WS/WSCustomer/insertAsCustomerResponse")
-    public boolean insertAsCustomer(
-        @WebParam(name = "user", targetNamespace = "")
-        User user,
-        @WebParam(name = "phone", targetNamespace = "")
-        int phone,
-        @WebParam(name = "birthDate", targetNamespace = "")
-        XMLGregorianCalendar birthDate);
-
-    /**
-     * 
-     * @param balance
-     * @param custId
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "topUpSaldo", targetNamespace = "http://WS/", className = "services.TopUpSaldo")
-    @ResponseWrapper(localName = "topUpSaldoResponse", targetNamespace = "http://WS/", className = "services.TopUpSaldoResponse")
-    @Action(input = "http://WS/WSCustomer/topUpSaldoRequest", output = "http://WS/WSCustomer/topUpSaldoResponse")
-    public boolean topUpSaldo(
-        @WebParam(name = "custId", targetNamespace = "")
-        String custId,
-        @WebParam(name = "balance", targetNamespace = "")
-        int balance);
-
-    /**
-     * 
-     * @param movieId
-     * @return
-     *     returns services.Movie
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getMovieById", targetNamespace = "http://WS/", className = "services.GetMovieById")
-    @ResponseWrapper(localName = "getMovieByIdResponse", targetNamespace = "http://WS/", className = "services.GetMovieByIdResponse")
-    @Action(input = "http://WS/WSCustomer/getMovieByIdRequest", output = "http://WS/WSCustomer/getMovieByIdResponse")
-    public Movie getMovieById(
-        @WebParam(name = "movieId", targetNamespace = "")
-        String movieId);
-
-    /**
-     * 
      * @param movieId
      * @return
      *     returns java.util.List<services.Schedule>
@@ -202,18 +121,99 @@ public interface WSCustomer {
 
     /**
      * 
-     * @param studioNumber
+     * @param balance
+     * @param userId
      * @return
-     *     returns java.util.List<services.Seat>
+     *     returns boolean
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getSeatByStudioNumber", targetNamespace = "http://WS/", className = "services.GetSeatByStudioNumber")
-    @ResponseWrapper(localName = "getSeatByStudioNumberResponse", targetNamespace = "http://WS/", className = "services.GetSeatByStudioNumberResponse")
-    @Action(input = "http://WS/WSCustomer/getSeatByStudioNumberRequest", output = "http://WS/WSCustomer/getSeatByStudioNumberResponse")
-    public List<Seat> getSeatByStudioNumber(
-        @WebParam(name = "studioNumber", targetNamespace = "")
-        int studioNumber);
+    @RequestWrapper(localName = "topUp", targetNamespace = "http://WS/", className = "services.TopUp")
+    @ResponseWrapper(localName = "topUpResponse", targetNamespace = "http://WS/", className = "services.TopUpResponse")
+    @Action(input = "http://WS/WSCustomer/topUpRequest", output = "http://WS/WSCustomer/topUpResponse")
+    public boolean topUp(
+        @WebParam(name = "userId", targetNamespace = "")
+        int userId,
+        @WebParam(name = "balance", targetNamespace = "")
+        int balance);
+
+    /**
+     * 
+     * @param movieId
+     * @return
+     *     returns services.Movie
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getMovieById", targetNamespace = "http://WS/", className = "services.GetMovieById")
+    @ResponseWrapper(localName = "getMovieByIdResponse", targetNamespace = "http://WS/", className = "services.GetMovieByIdResponse")
+    @Action(input = "http://WS/WSCustomer/getMovieByIdRequest", output = "http://WS/WSCustomer/getMovieByIdResponse")
+    public Movie getMovieById(
+        @WebParam(name = "movieId", targetNamespace = "")
+        String movieId);
+
+    /**
+     * 
+     * @param phone
+     * @param user
+     * @param birthDate
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "insertAsCustomer", targetNamespace = "http://WS/", className = "services.InsertAsCustomer")
+    @ResponseWrapper(localName = "insertAsCustomerResponse", targetNamespace = "http://WS/", className = "services.InsertAsCustomerResponse")
+    @Action(input = "http://WS/WSCustomer/insertAsCustomerRequest", output = "http://WS/WSCustomer/insertAsCustomerResponse")
+    public boolean insertAsCustomer(
+        @WebParam(name = "user", targetNamespace = "")
+        User user,
+        @WebParam(name = "phone", targetNamespace = "")
+        int phone,
+        @WebParam(name = "birthDate", targetNamespace = "")
+        XMLGregorianCalendar birthDate);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<services.Movie>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getShowingMovies", targetNamespace = "http://WS/", className = "services.GetShowingMovies")
+    @ResponseWrapper(localName = "getShowingMoviesResponse", targetNamespace = "http://WS/", className = "services.GetShowingMoviesResponse")
+    @Action(input = "http://WS/WSCustomer/getShowingMoviesRequest", output = "http://WS/WSCustomer/getShowingMoviesResponse")
+    public List<Movie> getShowingMovies();
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns services.Customer
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getCustomer", targetNamespace = "http://WS/", className = "services.GetCustomer")
+    @ResponseWrapper(localName = "getCustomerResponse", targetNamespace = "http://WS/", className = "services.GetCustomerResponse")
+    @Action(input = "http://WS/WSCustomer/getCustomerRequest", output = "http://WS/WSCustomer/getCustomerResponse")
+    public Customer getCustomer(
+        @WebParam(name = "id", targetNamespace = "")
+        String id);
+
+    /**
+     * 
+     * @param email
+     * @return
+     *     returns services.User
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getUserByEmail", targetNamespace = "http://WS/", className = "services.GetUserByEmail")
+    @ResponseWrapper(localName = "getUserByEmailResponse", targetNamespace = "http://WS/", className = "services.GetUserByEmailResponse")
+    @Action(input = "http://WS/WSCustomer/getUserByEmailRequest", output = "http://WS/WSCustomer/getUserByEmailResponse")
+    public User getUserByEmail(
+        @WebParam(name = "email", targetNamespace = "")
+        String email);
 
     /**
      * 
@@ -229,5 +229,20 @@ public interface WSCustomer {
     public Studio getStudioByStudioNumber(
         @WebParam(name = "studioNumber", targetNamespace = "")
         String studioNumber);
+
+    /**
+     * 
+     * @param studioNumber
+     * @return
+     *     returns java.util.List<services.Seat>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getSeatByStudioNumber", targetNamespace = "http://WS/", className = "services.GetSeatByStudioNumber")
+    @ResponseWrapper(localName = "getSeatByStudioNumberResponse", targetNamespace = "http://WS/", className = "services.GetSeatByStudioNumberResponse")
+    @Action(input = "http://WS/WSCustomer/getSeatByStudioNumberRequest", output = "http://WS/WSCustomer/getSeatByStudioNumberResponse")
+    public List<Seat> getSeatByStudioNumber(
+        @WebParam(name = "studioNumber", targetNamespace = "")
+        int studioNumber);
 
 }

@@ -28,6 +28,8 @@ public class ObjectFactory {
     private final static QName _GetAllScheduleByMovieIdResponse_QNAME = new QName("http://WS/", "getAllScheduleByMovieIdResponse");
     private final static QName _GetComingSoonMovies_QNAME = new QName("http://WS/", "getComingSoonMovies");
     private final static QName _GetComingSoonMoviesResponse_QNAME = new QName("http://WS/", "getComingSoonMoviesResponse");
+    private final static QName _GetCustomer_QNAME = new QName("http://WS/", "getCustomer");
+    private final static QName _GetCustomerResponse_QNAME = new QName("http://WS/", "getCustomerResponse");
     private final static QName _GetMovieById_QNAME = new QName("http://WS/", "getMovieById");
     private final static QName _GetMovieByIdResponse_QNAME = new QName("http://WS/", "getMovieByIdResponse");
     private final static QName _GetSeatByStudioNumber_QNAME = new QName("http://WS/", "getSeatByStudioNumber");
@@ -36,16 +38,16 @@ public class ObjectFactory {
     private final static QName _GetShowingMoviesResponse_QNAME = new QName("http://WS/", "getShowingMoviesResponse");
     private final static QName _GetStudioByStudioNumber_QNAME = new QName("http://WS/", "getStudioByStudioNumber");
     private final static QName _GetStudioByStudioNumberResponse_QNAME = new QName("http://WS/", "getStudioByStudioNumberResponse");
-    private final static QName _GetUser_QNAME = new QName("http://WS/", "getUser");
-    private final static QName _GetUserResponse_QNAME = new QName("http://WS/", "getUserResponse");
+    private final static QName _GetUserByEmail_QNAME = new QName("http://WS/", "getUserByEmail");
+    private final static QName _GetUserByEmailResponse_QNAME = new QName("http://WS/", "getUserByEmailResponse");
     private final static QName _InsertAsCustomer_QNAME = new QName("http://WS/", "insertAsCustomer");
     private final static QName _InsertAsCustomerResponse_QNAME = new QName("http://WS/", "insertAsCustomerResponse");
     private final static QName _Login_QNAME = new QName("http://WS/", "login");
     private final static QName _LoginResponse_QNAME = new QName("http://WS/", "loginResponse");
     private final static QName _Register_QNAME = new QName("http://WS/", "register");
     private final static QName _RegisterResponse_QNAME = new QName("http://WS/", "registerResponse");
-    private final static QName _TopUpSaldo_QNAME = new QName("http://WS/", "topUpSaldo");
-    private final static QName _TopUpSaldoResponse_QNAME = new QName("http://WS/", "topUpSaldoResponse");
+    private final static QName _TopUp_QNAME = new QName("http://WS/", "topUp");
+    private final static QName _TopUpResponse_QNAME = new QName("http://WS/", "topUpResponse");
     private final static QName _UpdateUser_QNAME = new QName("http://WS/", "updateUser");
     private final static QName _UpdateUserResponse_QNAME = new QName("http://WS/", "updateUserResponse");
 
@@ -86,6 +88,22 @@ public class ObjectFactory {
      */
     public GetComingSoonMoviesResponse createGetComingSoonMoviesResponse() {
         return new GetComingSoonMoviesResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetCustomer }
+     * 
+     */
+    public GetCustomer createGetCustomer() {
+        return new GetCustomer();
+    }
+
+    /**
+     * Create an instance of {@link GetCustomerResponse }
+     * 
+     */
+    public GetCustomerResponse createGetCustomerResponse() {
+        return new GetCustomerResponse();
     }
 
     /**
@@ -153,19 +171,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetUser }
+     * Create an instance of {@link GetUserByEmail }
      * 
      */
-    public GetUser createGetUser() {
-        return new GetUser();
+    public GetUserByEmail createGetUserByEmail() {
+        return new GetUserByEmail();
     }
 
     /**
-     * Create an instance of {@link GetUserResponse }
+     * Create an instance of {@link GetUserByEmailResponse }
      * 
      */
-    public GetUserResponse createGetUserResponse() {
-        return new GetUserResponse();
+    public GetUserByEmailResponse createGetUserByEmailResponse() {
+        return new GetUserByEmailResponse();
     }
 
     /**
@@ -217,19 +235,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TopUpSaldo }
+     * Create an instance of {@link TopUp }
      * 
      */
-    public TopUpSaldo createTopUpSaldo() {
-        return new TopUpSaldo();
+    public TopUp createTopUp() {
+        return new TopUp();
     }
 
     /**
-     * Create an instance of {@link TopUpSaldoResponse }
+     * Create an instance of {@link TopUpResponse }
      * 
      */
-    public TopUpSaldoResponse createTopUpSaldoResponse() {
-        return new TopUpSaldoResponse();
+    public TopUpResponse createTopUpResponse() {
+        return new TopUpResponse();
     }
 
     /**
@@ -397,6 +415,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCustomer }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://WS/", name = "getCustomer")
+    public JAXBElement<GetCustomer> createGetCustomer(GetCustomer value) {
+        return new JAXBElement<GetCustomer>(_GetCustomer_QNAME, GetCustomer.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCustomerResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://WS/", name = "getCustomerResponse")
+    public JAXBElement<GetCustomerResponse> createGetCustomerResponse(GetCustomerResponse value) {
+        return new JAXBElement<GetCustomerResponse>(_GetCustomerResponse_QNAME, GetCustomerResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetMovieById }{@code >}}
      * 
      */
@@ -469,21 +505,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetUser }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetUserByEmail }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://WS/", name = "getUser")
-    public JAXBElement<GetUser> createGetUser(GetUser value) {
-        return new JAXBElement<GetUser>(_GetUser_QNAME, GetUser.class, null, value);
+    @XmlElementDecl(namespace = "http://WS/", name = "getUserByEmail")
+    public JAXBElement<GetUserByEmail> createGetUserByEmail(GetUserByEmail value) {
+        return new JAXBElement<GetUserByEmail>(_GetUserByEmail_QNAME, GetUserByEmail.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetUserResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetUserByEmailResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://WS/", name = "getUserResponse")
-    public JAXBElement<GetUserResponse> createGetUserResponse(GetUserResponse value) {
-        return new JAXBElement<GetUserResponse>(_GetUserResponse_QNAME, GetUserResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://WS/", name = "getUserByEmailResponse")
+    public JAXBElement<GetUserByEmailResponse> createGetUserByEmailResponse(GetUserByEmailResponse value) {
+        return new JAXBElement<GetUserByEmailResponse>(_GetUserByEmailResponse_QNAME, GetUserByEmailResponse.class, null, value);
     }
 
     /**
@@ -541,21 +577,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TopUpSaldo }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link TopUp }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://WS/", name = "topUpSaldo")
-    public JAXBElement<TopUpSaldo> createTopUpSaldo(TopUpSaldo value) {
-        return new JAXBElement<TopUpSaldo>(_TopUpSaldo_QNAME, TopUpSaldo.class, null, value);
+    @XmlElementDecl(namespace = "http://WS/", name = "topUp")
+    public JAXBElement<TopUp> createTopUp(TopUp value) {
+        return new JAXBElement<TopUp>(_TopUp_QNAME, TopUp.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TopUpSaldoResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link TopUpResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://WS/", name = "topUpSaldoResponse")
-    public JAXBElement<TopUpSaldoResponse> createTopUpSaldoResponse(TopUpSaldoResponse value) {
-        return new JAXBElement<TopUpSaldoResponse>(_TopUpSaldoResponse_QNAME, TopUpSaldoResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://WS/", name = "topUpResponse")
+    public JAXBElement<TopUpResponse> createTopUpResponse(TopUpResponse value) {
+        return new JAXBElement<TopUpResponse>(_TopUpResponse_QNAME, TopUpResponse.class, null, value);
     }
 
     /**

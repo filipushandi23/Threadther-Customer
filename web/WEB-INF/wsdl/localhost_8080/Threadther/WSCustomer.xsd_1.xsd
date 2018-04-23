@@ -1,0 +1,334 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://WS/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://WS/">
+
+<xs:element name="getAllScheduleByMovieId" type="tns:getAllScheduleByMovieId"/>
+
+<xs:element name="getAllScheduleByMovieIdResponse" type="tns:getAllScheduleByMovieIdResponse"/>
+
+<xs:element name="getComingSoonMovies" type="tns:getComingSoonMovies"/>
+
+<xs:element name="getComingSoonMoviesResponse" type="tns:getComingSoonMoviesResponse"/>
+
+<xs:element name="getMovieById" type="tns:getMovieById"/>
+
+<xs:element name="getMovieByIdResponse" type="tns:getMovieByIdResponse"/>
+
+<xs:element name="getSeatByStudioNumber" type="tns:getSeatByStudioNumber"/>
+
+<xs:element name="getSeatByStudioNumberResponse" type="tns:getSeatByStudioNumberResponse"/>
+
+<xs:element name="getShowingMovies" type="tns:getShowingMovies"/>
+
+<xs:element name="getShowingMoviesResponse" type="tns:getShowingMoviesResponse"/>
+
+<xs:element name="getStudioByStudioNumber" type="tns:getStudioByStudioNumber"/>
+
+<xs:element name="getStudioByStudioNumberResponse" type="tns:getStudioByStudioNumberResponse"/>
+
+<xs:element name="getUser" type="tns:getUser"/>
+
+<xs:element name="getUserResponse" type="tns:getUserResponse"/>
+
+<xs:element name="insertAsCustomer" type="tns:insertAsCustomer"/>
+
+<xs:element name="insertAsCustomerResponse" type="tns:insertAsCustomerResponse"/>
+
+<xs:element name="login" type="tns:login"/>
+
+<xs:element name="loginResponse" type="tns:loginResponse"/>
+
+<xs:element name="register" type="tns:register"/>
+
+<xs:element name="registerResponse" type="tns:registerResponse"/>
+
+<xs:element name="topUpSaldo" type="tns:topUpSaldo"/>
+
+<xs:element name="topUpSaldoResponse" type="tns:topUpSaldoResponse"/>
+
+<xs:element name="updateUser" type="tns:updateUser"/>
+
+<xs:element name="updateUserResponse" type="tns:updateUserResponse"/>
+
+<xs:complexType name="getUser">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getUserResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:user" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="user">
+<xs:sequence>
+<xs:element name="admin" type="tns:admin" minOccurs="0"/>
+<xs:element name="cashier" type="tns:cashier" minOccurs="0"/>
+<xs:element name="customer" type="tns:customer" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="firstName" type="xs:string" minOccurs="0"/>
+<xs:element name="lastName" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="profilePicture" type="xs:string" minOccurs="0"/>
+<xs:element name="transactions" type="tns:transaction" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="userId" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="admin">
+<xs:sequence>
+<xs:element name="address" type="xs:string" minOccurs="0"/>
+<xs:element name="user" type="tns:user" minOccurs="0"/>
+<xs:element name="userId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cashier">
+<xs:sequence>
+<xs:element name="address" type="xs:string" minOccurs="0"/>
+<xs:element name="hireDate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+<xs:element name="user" type="tns:user" minOccurs="0"/>
+<xs:element name="userId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="customer">
+<xs:sequence>
+<xs:element name="balance" type="xs:int" minOccurs="0"/>
+<xs:element name="birthDate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="phoneNumber" type="xs:int" minOccurs="0"/>
+<xs:element name="user" type="tns:user" minOccurs="0"/>
+<xs:element name="userId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="transaction">
+<xs:sequence>
+<xs:element name="schedule" type="tns:schedule" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+<xs:element name="tickets" type="tns:ticket" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="time" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="transactionId" type="xs:int" minOccurs="0"/>
+<xs:element name="user" type="tns:user" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="schedule">
+<xs:sequence>
+<xs:element name="id" type="tns:scheduleId" minOccurs="0"/>
+<xs:element name="movie" type="tns:movie" minOccurs="0"/>
+<xs:element name="price" type="xs:int" minOccurs="0"/>
+<xs:element name="studio" type="tns:studio" minOccurs="0"/>
+<xs:element name="transactions" type="tns:transaction" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="scheduleId">
+<xs:sequence>
+<xs:element name="movieStart" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="studioNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="movie">
+<xs:sequence>
+<xs:element name="duration" type="xs:int" minOccurs="0"/>
+<xs:element name="movieId" type="xs:int" minOccurs="0"/>
+<xs:element name="poster" type="xs:string" minOccurs="0"/>
+<xs:element name="rating" type="xs:double" minOccurs="0"/>
+<xs:element name="schedules" type="tns:schedule" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+<xs:element name="synopsis" type="xs:string" minOccurs="0"/>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="studio">
+<xs:sequence>
+<xs:element name="cinema" type="tns:cinema" minOccurs="0"/>
+<xs:element name="colCapacity" type="xs:int" minOccurs="0"/>
+<xs:element name="rowCapacity" type="xs:int" minOccurs="0"/>
+<xs:element name="schedules" type="tns:schedule" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="seats" type="tns:seat" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="studioName" type="xs:string" minOccurs="0"/>
+<xs:element name="studioNumber" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cinema">
+<xs:sequence>
+<xs:element name="address" type="xs:string" minOccurs="0"/>
+<xs:element name="cinemaName" type="xs:string" minOccurs="0"/>
+<xs:element name="city" type="xs:string" minOccurs="0"/>
+<xs:element name="province" type="xs:string" minOccurs="0"/>
+<xs:element name="studios" type="tns:studio" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="seat">
+<xs:sequence>
+<xs:element name="id" type="tns:seatId" minOccurs="0"/>
+<xs:element name="studio" type="tns:studio" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="seatId">
+<xs:sequence>
+<xs:element name="seatPosition" type="xs:string" minOccurs="0"/>
+<xs:element name="studioNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ticket">
+<xs:sequence>
+<xs:element name="id" type="tns:ticketId" minOccurs="0"/>
+<xs:element name="transaction" type="tns:transaction" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ticketId">
+<xs:sequence>
+<xs:element name="seatPosition" type="xs:string" minOccurs="0"/>
+<xs:element name="transactionId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getShowingMovies">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getShowingMoviesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:movie" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getMovieById">
+<xs:sequence>
+<xs:element name="movieId" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getMovieByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:movie" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getStudioByStudioNumber">
+<xs:sequence>
+<xs:element name="studioNumber" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getStudioByStudioNumberResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:studio" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="login">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="loginResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="register">
+<xs:sequence>
+<xs:element name="first_name" type="xs:string" minOccurs="0"/>
+<xs:element name="last_name" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="profile_picture" type="xs:string" minOccurs="0"/>
+<xs:element name="phone_number" type="xs:int" minOccurs="0"/>
+<xs:element name="birth_date" type="xs:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registerResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="topUpSaldo">
+<xs:sequence>
+<xs:element name="custId" type="xs:string" minOccurs="0"/>
+<xs:element name="balance" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="topUpSaldoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateUser">
+<xs:sequence>
+<xs:element name="user" type="tns:user" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateUserResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertAsCustomer">
+<xs:sequence>
+<xs:element name="user" type="tns:user" minOccurs="0"/>
+<xs:element name="phone" type="xs:int"/>
+<xs:element name="birthDate" type="xs:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertAsCustomerResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllScheduleByMovieId">
+<xs:sequence>
+<xs:element name="movieId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllScheduleByMovieIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:schedule" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSeatByStudioNumber">
+<xs:sequence>
+<xs:element name="studioNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSeatByStudioNumberResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:seat" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getComingSoonMovies">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getComingSoonMoviesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:movie" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
